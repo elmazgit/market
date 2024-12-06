@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [message, setMessage] = useState('');
-
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  
   useEffect(() => {
     // Fetch data from backend API
-    fetch('http://localhost:3001/api/greet')
+    fetch(apiUrl + "/api/greet")
       .then(response => response.json())
       .then(data => setMessage(data.message))
       .catch(error => console.error('Error fetching data:', error));
